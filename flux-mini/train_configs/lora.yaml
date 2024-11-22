@@ -1,0 +1,38 @@
+model_name: "flux-mini"
+data_config:
+  train_batch_size: 1
+  num_workers: 4
+  img_size: 512
+  img_dir:  /path/to/dataset
+report_to: tensorboard
+train_batch_size: 1
+output_dir: results_lora
+max_train_steps: 100000
+learning_rate: 1e-4
+lr_scheduler: constant
+lr_warmup_steps: 10
+adam_beta1: 0.9
+adam_beta2: 0.999
+adam_weight_decay: 0.01
+adam_epsilon: 1e-8
+max_grad_norm: 1.0
+logging_dir: logs
+mixed_precision: "bf16"
+checkpointing_steps: 5000
+checkpoints_total_limit: 1
+tracker_project_name: lora_test
+resume_from_checkpoint: False 
+gradient_accumulation_steps: 1
+rank: 16
+single_blocks: null
+double_blocks: null
+every_log_image: 5000
+
+deepspeed:
+  precision: bf16
+  stage: 2
+  offload_parameters: True
+  allgather_bucket_size: 2e7
+  contiguous_gradients: True
+  overlap_comm: True
+  reduce_bucket_size: 2e8

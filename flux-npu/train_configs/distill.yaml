@@ -1,0 +1,45 @@
+model_name: "flux-dev"
+data_config:
+  train_batch_size: 1
+  num_workers: 1
+  img_size: 1024
+  img_dir:  /path/to/dataset
+report_to: tensorboard
+train_batch_size: 1
+output_dir: results_distill
+max_train_steps: 50000
+learning_rate: 1e-4
+distill_cast: True   
+learning_rate_w: 0
+lr_scheduler: constant
+lr_warmup_steps: 10
+adam_beta1: 0.9
+adam_beta2: 0.999
+adam_weight_decay: 0.01
+adam_epsilon: 1e-8
+max_grad_norm: 1.0
+logging_dir: logs
+mixed_precision: "bf16"
+checkpointing_steps: 5000
+checkpoints_total_limit: 1
+tracker_project_name: log
+resume_from_checkpoint: False
+gradient_accumulation_steps: 1
+kd_weight: 1.0
+output_weight: 1.0
+every_log_image: 500
+eval_before_training: False      
+distill_slim_double: [0, 1, 2, 10, 18]
+distill_slim_single: [3, 7, 11, 15, 19, 23, 27, 31, 35, 37] 
+distill_target_double: [3, 7, 11, 15, 18]
+distill_target_single: [3, 7, 11, 15, 19, 23, 27, 31, 35, 37]  
+distill_fn: 'l2'
+
+deepspeed:
+  precision: bf16
+  stage: 2
+  offload_parameters: True
+  allgather_bucket_size: 2e7
+  contiguous_gradients: True
+  overlap_comm: True
+  reduce_bucket_size: 2e8

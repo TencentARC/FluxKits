@@ -1,0 +1,16 @@
+accelerate==0.23.0
+deepspeed==0.13.1
+einops==0.8.0
+transformers==4.41.2
+huggingface-hub==0.24.6
+datasets
+omegaconf
+diffusers
+sentencepiece
+opencv-python
+matplotlib
+onnxruntime
+torchvision
+timm
+fire
+invisible-watermark
