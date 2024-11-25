@@ -28,8 +28,13 @@ Nowadays, text-to-image (T2I) models are growing stronger but larger, which limi
 🔥🔥 Nonetheless, with limited computing and data resources, the capability of our Flux-mini is still limited in certain domains. To facilitate the development of flux-based models, we open-sourced the codes to distill Flux in [this folder](./flux-npu/). **We appeal people interested in this project to collaborate together to build a more applicable and powerful text-to-image model!**
 
 
+### ⏰ Timeline
+
+**[2024.11.25]** We are delighted to release the first version of Flux-Mini!
+
+
 ### ⚡️ Efficiency Comparison
-We compared our Flux-Mini with Flux-Dev on a single H20 GPU with BF16 precision.
+We compared our Flux-Mini with Flux-Dev on `a single H20 GPU` with `BF16` precision, with `batch-size=1`, `deepspeed stage=2`, `gradient_checkpoint=True`. For inference, we adopt `num_steps=50`. The costs of T5, CLIP and VAE are included. `OOM` means out-of-memory.
 
 
 |  Resolution  | Training Strategy | Model | Training Speed (s/img) | Training Memory (GB) | Inference Speed (s/img) | Inference Memory (GB) |
@@ -62,16 +67,29 @@ Since our model is trained with prompts in JourneyDB, we encourage users to appl
 For example: "profile of sad Socrates, full body, high detail, dramatic scene, Epic dynamic action, wide angle, cinematic, hyper-realistic, concept art, warm muted tones as painted by Bernie Wrightson, Frank Frazetta."
 
 
-Thank you for your attention! We will continue to improve our model and release new versions in the future.
-
-
+We welcome everyone in the community of collaborate and PR for this model.
 
 
 ## 💻 Flux-NPU
 
-The widespread development of NPUs has provided extra device options for model training and inference. However, currently the adaptation of GPU codes to NPU may still have some issues. We provide a codebase that could run the training and inference of FLUX on NPUs. 
+The widespread development of NPUs has provided extra device options for model training and inference. To facilitate the usage of flux, We provide a codebase that could run the training and inference code of FLUX on NPUs. 
 
 Please find out more details in [this folder](./flux-npu).   
+
+### ⚡️ Efficiency Comparison on NPU.
+We compared our Flux-Mini with Flux-Dev on a single `Ascend 910B NPU` with `BF16` precision, with `batch-size=1`, `deepspeed stage=2`, `gradient_checkpoint=True`. For inference, we adopt `num_steps=50`. The costs of T5, CLIP and VAE are included. `OOM` means out-of-memory.
+
+
+|  Resolution  | Training Strategy | Model | Training Speed (s/img) | Training Memory (GB) | Inference Speed (s/img) | Inference Memory (GB) |
+|-------|------|---------|---------|---------|---------|---------|
+| 512 | LoRA(r=16) | Flux-dev | 1.07 | 38.45 | 11.00 | 58.62 |
+| 512 | LoRA(r=16) | Flux-Mini | 0.37 | 20.64 | 3.26 | 19.48 | 
+| 512 | Fully Finetune | Flux-dev | OOM | OOM | 11.00 | 58.62 | 
+| 512 | Fully Finetune | Flux-Mini | OOM | OOM | 3.26 | 19.48 | 
+| 1024 | LoRA(r=16) | Flux-dev | 3.01 | 44.69 | OOM | OOM |
+| 1024 | LoRA(r=16) | Flux-Mini | 1.06 | 25.84 | 10.60 | 27.76 |
+| 1024 | Fully Finetune | Flux-dev | OOM | OOM | OOM | OOM |
+| 1024 | Fully Finetune | Flux-Mini | OOM | OOM | 10.60 | 27.76 |
 
 ## 🐾 Disclaimer
 Users are granted the freedom to create images using our model and tools, but they are expected to comply with local laws and utilize it responsibly. The developers do not assume any responsibility for potential misuse by users.
