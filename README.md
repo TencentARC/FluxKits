@@ -30,7 +30,7 @@ Nowadays, text-to-image (T2I) models are growing stronger but larger, which limi
 
 ### ⏰ Timeline
 
-**[2024.11.25]** We are delighted to release the first version of Flux-Mini!
+**[2024.11.26]** We are delighted to release the first version of Flux-Mini!
 
 
 ### ⚡️ Efficiency Comparison

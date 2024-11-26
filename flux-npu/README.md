@@ -1,5 +1,5 @@
-# Flux-NPU
-A tool box that helps you to run your flux model on NPUs.
+<div align='center'><img src="../assets/fluxnpu.jpg" width="140" alt="Teaser image"> </div>
+<div align='center'>  Flux-NPU: A tool box that helps you to run your flux model on NPUs. </div>
 
 ## Environment Setup
 
