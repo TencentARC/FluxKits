@@ -28,7 +28,6 @@ We provide two options to inference with our model:
 ### Downloading Weights
 
 
-
 To run the code with our Flux-mini locally, please download the following model weights:
 * [Flux-mini](https://huggingface.co/TencentARC/flux-mini)
 * [Flux-Autoencoder](https://huggingface.co/black-forest-labs/FLUX.1-dev)
