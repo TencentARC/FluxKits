@@ -63,7 +63,7 @@ Unfortunately, it is still incompetent in many scenarios. Including but not limi
 * Physical Plausibility
 * Cultural Diversity
 
-Since our model is trained with prompts in JourneyDB, we encourage users to apply our model with similar prompt formats (compositions of nouns and adjectives) to achieve the best quality. 
+Since our model is trained with prompts in JourneyDB, we encourage users to apply our model with **similar prompt formats** (compositions of nouns and adjectives) to achieve the best quality. 
 For example: "profile of sad Socrates, full body, high detail, dramatic scene, Epic dynamic action, wide angle, cinematic, hyper-realistic, concept art, warm muted tones as painted by Bernie Wrightson, Frank Frazetta."
 
 
